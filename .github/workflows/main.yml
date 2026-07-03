@@ -86,7 +86,10 @@ on:
         description: "禁用 SUSFS"
         type: boolean
         default: false
-
+      enable_nomount:
+        description: "Enable NoMount"
+        type: boolean
+        default: false
       # ==================== 构建版本选择 ====================
       build_a12_5_10:
         description: "Android 12 - 5.10"
@@ -145,6 +148,7 @@ jobs:
       use_bbg: ${{ inputs.use_bbg }}
       use_rekernel: ${{ inputs.use_rekernel }}
       cancel_susfs: ${{ inputs.cancel_susfs }}
+      enable_nomount: ${{ inputs.enable_nomount }}
       droidspaces: ${{ inputs.droidspaces }}
       droidspaces_ntsync: ${{ inputs.droidspaces_ntsync }}
       called_from_main: true
