@@ -69,6 +69,10 @@ on:
         required: true
         type: boolean
         default: true
+      enable_nomount:
+        required: true
+        type: boolean
+        default: false
       supp_op:
         required: false
         type: boolean
@@ -111,6 +115,7 @@ jobs:
           echo "KSU 分支      : ${{ inputs.ksu_branch }}"
           echo "构建时间      : ${{ inputs.build_time }}"
           echo "SUSFS 状态    : ${{ inputs.enable_susfs }}"
+          echo "NoMount       : ${{ inputs.enable_nomount }}"
           echo "ZRAM 增强     : ${{ inputs.use_zram }}"
           echo "BBG 补丁      : ${{ inputs.use_bbg }}"
           echo "Re-Kernel     : ${{ inputs.use_rekernel }}"
@@ -725,6 +730,12 @@ jobs:
               fi
             fi
           fi
+
+      - name: NoMount
+        if: inputs.enable_nomount
+        uses: ./.github/actions/nomount
+        with:
+          kernel_version: ${{ inputs.kernel_version }}
 
       - name: 克隆 Droidspaces 补丁仓库
         if: inputs.droidspaces != 'off'

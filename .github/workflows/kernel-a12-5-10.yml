@@ -46,6 +46,11 @@ on:
         required: true
         type: boolean
         default: false
+      enable_nomount:
+        description: "Enable NoMount"
+        required: true
+        type: boolean
+        default: false
       droidspaces:
         description: "Droidspaces 容器支持"
         required: false
@@ -85,6 +90,9 @@ on:
         type: boolean
         default: false
       cancel_susfs:
+        required: false
+        type: boolean
+      enable_nomount:
         required: false
         type: boolean
       droidspaces:
@@ -191,6 +199,7 @@ jobs:
       use_rekernel: ${{ inputs.use_rekernel || false }}
       supp_op: false
       enable_susfs: ${{ !inputs.cancel_susfs }}
+      enable_nomount: ${{ inputs.enable_nomount  || false }}
       droidspaces: ${{ inputs.droidspaces || 'off' }}
       droidspaces_ntsync: ${{ inputs.droidspaces_ntsync || false }}
 
