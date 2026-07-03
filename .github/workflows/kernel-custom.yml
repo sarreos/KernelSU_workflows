@@ -90,6 +90,11 @@ on:
         required: true
         type: boolean
         default: false
+      enable_nomount:
+        description: "Enable NoMount"
+        required: true
+        type: boolean
+        default: false
       supp_op:
         description: "启用一加 8E 支持"
         required: false
@@ -131,6 +136,7 @@ jobs:
       use_rekernel: ${{ inputs.use_rekernel || false }}
       supp_op: ${{ inputs.supp_op || false }}
       enable_susfs: ${{ !inputs.cancel_susfs }}
+      enable_nomount: ${{ inputs.enable_nomount  || false }}
       droidspaces: ${{ inputs.droidspaces || 'off' }}
       droidspaces_ntsync: ${{ inputs.droidspaces_ntsync || false }}
 
