@@ -11,9 +11,9 @@ permissions:
 on:
   workflow_dispatch:
     inputs:
-      # ==================== 内核版本配置 ====================
+      # ==================== Kernel Version Configuration ====================
       android_version:
-        description: "Android 版本"
+        description: "Android Version"
         required: true
         type: choice
         options:
@@ -24,7 +24,7 @@ on:
           - android16
         default: android14
       kernel_version:
-        description: "内核版本"
+        description: "Kernel Version"
         required: true
         type: choice
         options:
@@ -35,58 +35,58 @@ on:
           - "6.12"
         default: "6.1"
       sub_level:
-        description: "子版本号 (如 66, 198, X)"
+        description: "Sublevel (eg. 66, 198, X)"
         required: true
         type: string
         default: "157"
       os_patch_level:
-        description: "安全补丁级别 (如 2022-01, lts)"
+        description: "OS Patch Level (eg. 2022-01, lts)"
         required: true
         type: string
         default: "2025-12"
       revision:
-        description: "修订版本 (如 r11, 仅 5.10 需要)"
+        description: "Revision (eg. r11, 5.10 only)"
         required: false
         type: string
         default: ""
 
-      # ==================== KernelSU 配置 ====================
-      # KernelSU 变体固定为 ReSukiSU
+      # ==================== KernelSU configuration ====================
+      # KernelSU fork set to ReSukiSU
       kernelsu_branch:
-        description: "KSU 分支 (main/builtin/自定义commit hash，留空使用默认)"
+        description: "KSU branch (main/builtin/commit hash)"
         required: false
         type: string
         default: ""
 
-      # ==================== 可选配置 ====================
+      # ==================== Optional configurations ====================
       version:
-        description: "自定义版本名 (可选)"
+        description: "Custom Version Name"
         required: false
         type: string
       build_time:
-        description: "自定义构建时间 (可选，N或留空=当前UTC)"
+        description: "Custom Build Time"
         required: false
         type: string
         default: "Sun Mar 22 08:10:00 UTC 2026"
 
-      # ==================== 功能开关 ====================
+      # ==================== Features ====================
       use_zram:
-        description: "启用 ZRAM 增强算法"
+        description: "Enable ZRAM"
         required: true
         type: boolean
         default: false
       use_bbg:
-        description: "启用 BBG 防格机"
+        description: "Enable BBG"
         required: true
         type: boolean
         default: true
       use_rekernel:
-        description: "启用 Re-Kernel 驱动"
+        description: "Enable Re-Kernel"
         required: false
         type: boolean
         default: false
       cancel_susfs:
-        description: "禁用 SUSFS"
+        description: "Disable SUSFS"
         required: true
         type: boolean
         default: true
@@ -96,12 +96,12 @@ on:
         type: boolean
         default: true
       supp_op:
-        description: "启用一加 8E 支持"
+        description: "Enable Support for OP 8E"
         required: false
         type: boolean
         default: false
       droidspaces:
-        description: "Droidspaces 容器支持 (5.10~6.6: 槽位补丁, 6.12: 开/关)"
+        description: "Droidspaces support"
         required: false
         type: choice
         options:
@@ -111,7 +111,7 @@ on:
           - "345"
         default: "off"
       droidspaces_ntsync:
-        description: "启用 Droidspaces 容器 NTSync 支持（需启用 Droidspaces）"
+        description: "Enable Droidspaces NTSync"
         required: false
         type: boolean
         default: false
