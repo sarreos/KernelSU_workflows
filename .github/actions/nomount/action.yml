@@ -29,8 +29,9 @@ runs:
       shell: bash
       working-directory: ${{ env.KERNEL_ROOT }}/common
       run: |
-        cp ${{ github.workspace }}/nomount/kernel/src/* ./fs/
-        patch -p1 < ${{ github.workspace }}/nomount/kernel/patches/nomount_${{ inputs.kernel_version }}_kernel_integration.patch
+        cp ${{ github.workspace }}/nomount/kernel/src/nomount.c ./fs/
+        cp ${{ github.workspace }}/nomount/kernel/src/nomount.h ./fs/
+        patch -p1 --fuzz=10 < ${{ github.workspace }}/nomount/kernel/patches/nomount_kernel_integration.patch
     - name: Enable Config
       shell: bash
       working-directory: ${{ env.KERNEL_ROOT }}/common
